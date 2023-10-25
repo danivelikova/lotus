@@ -1,5 +1,5 @@
 # LOTUS: Learning to Optimize Task-based US representations
-### [Project Page](https://danivelikova.github.io/lotus/) | [Paper](https://arxiv.org/pdf/2307.16021.pdf) | [Data]()
+### [Project Page](https://danivelikova.github.io/lotus/) | [Paper](https://arxiv.org/pdf/2307.16021.pdf) | [Data](https://github.com/danivelikova/lotus/releases/tag/miccai2023)
 
 ## Getting Started
 
