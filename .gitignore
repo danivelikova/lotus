@@ -1,0 +1,11 @@
+.vscode
+__pycache__/
+results_test/*
+datasets/*
+!datasets/.gitkeep
+checkpoints/*
+wandb/
+*.idea/
+*.png
+*.zip
+*.jpg

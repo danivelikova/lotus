@@ -1,0 +1,54 @@
+debug : False  
+exp_name : exp_name
+project_name : lotus-Segmentation     
+base_folder_data_path: datasets/CT_labelmaps/
+base_folder_mask_path : datasets/CT_labelmaps/
+labelmap_path : /ct_labelmap/
+aorta_only: False
+
+data_dir_real_us_cut_training : datasets/trainA_500
+data_dir_real_us_test : datasets/GT_data_vessels_testing_100/
+data_dir_real_us_stopp_crit : datasets/GT_data_vessels_stopp_crit/
+output_path : ./checkpoints
+device : cuda
+
+dataset : ct_3d_labemaps_dataset.CT3DLabelmapDataset
+dataloader_ct_labelmaps : ct_3d_labemaps_dataset.CT3DLabelmapDataLoader
+dataloader_real_us_test : real_us_dataset_with_gt.RealUSGTDataset
+
+n_classes : 1
+pred_label : 13    # Change the label value depending on the segmentation goal: e.g 4-vessels, 6-kidney, 11-liver, 13-bone. Check all label values in us_rendering_model.py
+
+module : segm_us_rendr.SegmentationUSRenderedModule
+
+outer_model_monai : False
+outer_model : unet_2d.OriginalUNet
+
+dropout: False
+dropout_ratio : 0.0
+seg_net_input_augmentations_noise_blur : True
+seg_net_input_augmentations_rand_crop : True
+
+inner_model : us_rendering_model.UltrasoundRendering
+warp_img : True
+num_workers : 1 
+
+batch_size : 1
+inner_model_learning_rate: 0.0001
+outer_model_learning_rate: 0.0001
+scheduler : False
+grad_clipping: False
+
+min_epochs : 70
+max_epochs : 200
+early_stopping_patience : 5 #5
+validate_every_n_steps : 1 #default is 50
+
+stopping_crit_gt_imgs : True
+epochs_check_stopp_crit : 50
+
+use_idtB : True
+logging : True
+log_default_renderer : True
+nr_imgs_to_plot : 16
+
