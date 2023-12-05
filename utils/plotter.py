@@ -95,8 +95,6 @@ class Plotter():
             images_pil.append(pil_fig_t)
             labels += label + '|'
 
-        # print('LABELS: ', labels)
-
         if plot_single: wandb.log({str(labels): [wandb.Image(image) for image in images_pil]})
 
         return torchvision.utils.make_grid(images_pil)

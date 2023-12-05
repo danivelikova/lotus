@@ -105,12 +105,6 @@ def get_transform(opt, params=None, grayscale=False, method=transforms.Interpola
         else:
             transform_list.append(transforms.Lambda(lambda img: __random_zoom(img, opt.load_size, opt.crop_size, method, factor=params["scale_factor"])))
 
-    # if 'crop' in opt.preprocess and not eval:
-    #     if params is None or 'crop_pos' not in params:
-    #         transform_list.append(transforms.RandomCrop(opt.crop_size))
-    #     else:
-    #         transform_list.append(transforms.Lambda(lambda img: __crop(img, params['crop_pos'], opt.crop_size)))
-
     if 'patch' in opt.preprocess:
         transform_list.append(transforms.Lambda(lambda img: __patch(img, params['patch_index'], opt.crop_size)))
 

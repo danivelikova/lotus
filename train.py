@@ -50,8 +50,7 @@ if __name__ == "__main__":
     train_loader_ct_labelmaps, train_dataset_ct_labelmaps, val_dataset_ct_labelmaps, val_loader_ct_labelmaps = helpers.load_ct_labelmaps_training_data(hparams)
     _, real_us_stopp_crit_dataloader = helpers.load_real_us_gt_test_data(hparams)
 
-    early_stopping = helpers.create_early_stopping(hparams, hparams.exp_name, 'test')
-    early_stopping_best_val = helpers.create_early_stopping(hparams, hparams.exp_name, 'valid')
+    early_stopping = helpers.create_early_stopping(hparams, hparams.exp_name, 'valid')
 
     avg_train_losses, avg_valid_losses = ([] for i in range(2))
 
